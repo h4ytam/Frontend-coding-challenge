@@ -22,19 +22,17 @@ function App() {
       data: { items },
     } = await axios.get(url);
     setItems(items);
+  };
+  const DataScrolling = () => {
     setCurrentPage(currentPage + 1);
   };
   useEffect(() => {
     fetchApi();
   }, [currentPage]);
-  // const DataScrolling = () => {
-  //   return this.fetchApi();
-  // };
-  // console.log(this.fetchApi());
 
   return (
     <div className="App">
-      <Repositories OnPageChange={currentPage} items={items} />
+      <Repositories DataScrolling={DataScrolling} items={items} />
     </div>
   );
 }
